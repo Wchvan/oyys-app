@@ -1,0 +1,213 @@
+@import "./vars.scss";
+@import "./mixins.scss";
+@import "./reset.scss";
+
+page {
+  box-sizing: border-box;
+  font-size: $font-size;
+  height: 100%;
+  background-color: #eee;
+}
+
+
+view,
+text {
+  font-size: $font-size;
+  box-sizing: border-box;
+  color: #333;
+}
+
+// 去除按钮默认边框
+button::after {
+  border: none;
+}
+
+.flex-row {
+  @include flex-row();
+}
+
+.flex-row-between {
+  @include flex-row();
+  justify-content: space-between;
+}
+
+.flex-row-around {
+  @include flex-row();
+  justify-content: space-around;
+}
+
+.flex-row-center {
+  @include flex-row();
+  justify-content: center;
+}
+
+.flex-row-end {
+  @include flex-row();
+  justify-content: flex-end;
+}
+
+.flex-column {
+  @include flex-column();
+}
+
+.flex-column-center {
+  @include flex-column();
+  align-items: center;
+  justify-content: center;
+}
+
+.flex1 {
+  flex: 1;
+  height: 100%;
+}
+
+.text-line1 {
+  @include text-eli();
+  -webkit-line-clamp: 1;
+}
+
+.text-line2 {
+  @include text-eli();
+  -webkit-line-clamp: 2;
+}
+
+/* 间隔相关 */
+.pd10 {
+  padding: 10rpx;
+}
+.pd20 {
+  padding: 20rpx;
+}
+.pb10{
+  padding-bottom: 10rpx;
+}
+.pb20{
+  padding-bottom: 20rpx;
+}
+.mx10{
+  margin: 10rpx;
+}
+.mx20{
+  margin: 20rpx;
+}
+.mx40{
+  margin: 40rpx;
+}
+.mb10 {
+  margin-bottom: 10rpx;
+}
+.mb20 {
+  margin-bottom: 20rpx;
+}
+.mb32 {
+  margin-bottom: 32rpx;
+}
+.mb40 {
+  margin-bottom: 40rpx;
+}
+.mt10{
+  margin-top: 10rpx;
+}
+.mt20{
+  margin-top: 20rpx;
+}
+.mt40{
+    margin-top: 40rpx;
+}
+.mt60 {
+  margin-top: 60rpx;
+}
+.mt100 {
+  margin-top: 100rpx;
+}
+.ml20 {
+  margin-left: 20rpx;
+}
+.ml40 {
+  margin-left: 40rpx;
+}
+/* 字体大小相关 */
+
+.font24 {
+  font-size: 24rpx;
+}
+
+.font48 {
+  font-size: 48rpx;
+}
+.font36 {
+  font-size: 36rpx;
+}
+.font32 {
+  font-size: 32rpx;
+}
+.font-bold {
+  font-weight: bold;
+}
+.text-center {
+  text-align: center;
+}
+
+.text-white {
+  color: #fff;
+}
+.text-color-6 {
+  color: #666;
+}
+.text-color-9 {
+  color: #999;
+}
+.text-color-purple{
+  color: #9400D3;
+}
+.bg-white {
+  background-color: #fff;
+}
+.bg-blue{
+  background-color: $blue-color;
+}
+.bg-red{
+  background-color: $red-color;
+}
+.bg-green{
+  background-color: $primary-color;
+}
+/* 位置相关 */
+
+.center{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+.center-x{
+  position: relative;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.fix{
+  position: fixed;
+}
+
+/* border相关 */
+.bt1{
+  border-bottom: 1px solid $gray-color;
+}
+
+.bt2{
+  border-bottom: 1px solid $blue-color;
+}
+
+.bt3{
+  border-bottom: 1px solid $red-color;
+}
+
+/* 大小相关 */
+.wd100{
+  width: 100%;
+}
+.ht100{
+  height: 100%;
+}
