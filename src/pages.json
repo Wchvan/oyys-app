@@ -1,16 +1,58 @@
-{
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+{	
+	"easycom": {
+		"autoscan": true,
+		"custom": {
+			"^uni-(.*)": "@dcloudio/uni-ui/lib/uni-$1/uni-$1.vue"
+		}
+	},
+	"pages": [
+		{
+			"path": "pages/login/login",
+			"name": "login"
+		},
 		{
 			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
+			"name": "index"
+		},
+		{
+			"path": "pages/order/order",
+			"name": "order"
+		},
+		{
+			"path": "pages/order/order-detail/order-detail",
+			"name": "order-detail"
+		},
+		{
+			"path": "pages/success/success",
+			"name": "success"
+		}, 
+		{
+			"path": "pages/ok/ok",
+			"name": "ok"
+		}, 
+		{
+			"path": "pages/error/error",
+			"name": "error"
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
+		"navigationBarTitleText": "食刻",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
+	},
+	"tabBar": {
+		"fontSize": "20px",
+		"selectedColor": "#D81E06",
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/order/order",
+				"text": "订单"
+			}
+		]
 	}
 }

@@ -1,11 +1,13 @@
 @import "./vars.scss";
 @import "./mixins.scss";
 @import "./reset.scss";
+@import './iconfont.scss';
+
 
 page {
   box-sizing: border-box;
   font-size: $font-size;
-  height: 100%;
+  height: fit-content;
   background-color: #eee;
 }
 
@@ -205,9 +207,9 @@ button::after {
 }
 
 /* 大小相关 */
-.wd100{
+.w-full{
   width: 100%;
 }
-.ht100{
+.h-full{
   height: 100%;
 }

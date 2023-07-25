@@ -28,10 +28,10 @@ export default defineConfig({
   server: {
     port: 5173,
     proxy: {
-      '/api': {
-        target: 'http://127.0.0.1:4523/m1/2917564-0-default',
+      '/mini': {
+        target: 'http://162.14.79.224/',
         changeOrigin: true,
-        rewrite: (path: string) => path.replace(/^\/api/, ''),
+        rewrite: (path: string) => path.replace(/^\/mini/, '/mini'),
       },
     },
   },
