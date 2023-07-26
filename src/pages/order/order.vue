@@ -17,7 +17,7 @@
         <view class="provider">{{ item.supplierName }}</view>
       </view>
       <view class="card-item">
-        <view class="date">2017-06-25</view>
+        <view class="date">{{ item.date }}</view>
         <button
           class="btn"
           :disabled="!item.isVerified"

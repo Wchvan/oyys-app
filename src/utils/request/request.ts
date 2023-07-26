@@ -1,7 +1,8 @@
 import type { apiParm } from '@/interface/api'
+import { useUserStore } from '@/store/user/user'
 
 let defalutPATH: string // 声明默认请求地址头
-const defaultTokenKey = 'Authorization'
+const defaultTokenKey = 'token'
 
 defalutPATH = '/mini'
 
@@ -13,7 +14,7 @@ class Request {
       header = param.header || {},
       data = param.data || {},
       params = param.params || {},
-      token = sessionStorage.getItem('token') || '',
+      token = useUserStore().userInfo.token || '',
       hideLoading = param.hideLoading || false
 
     // 拼接完整请求地址

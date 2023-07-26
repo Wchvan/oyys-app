@@ -40,7 +40,7 @@
           v-for="item in orderStore.orderList[index].commentImage"
           :key="item"
           :src="item"
-          style="width: 100rpx; height: 100rpx; margin: 20rpx"
+          style="width: 200rpx; height: 200rpx; margin: 20rpx"
         />
       </view>
     </uni-section>

@@ -1,5 +1,6 @@
 import request from './request'
 import type { apiResp } from '@/interface/api'
+import { useUserStore } from '@/store/user/user'
 
 export async function get<T>(url: string, data: object) {
   const res = (await request({
@@ -12,6 +13,9 @@ export async function get<T>(url: string, data: object) {
       title: res.msg,
       icon: 'none',
     })
+    if (res.code === 1 || useUserStore().userInfo.id === -1) {
+      uni.redirectTo({ url: '/pages/login/login' })
+    }
   }
   return res
 }
@@ -28,6 +32,9 @@ export async function post<T>(url: string, data: object) {
       title: res.msg,
       icon: 'none',
     })
+    if (res.code === 1 || useUserStore().userInfo.id === -1) {
+      uni.redirectTo({ url: '/pages/login/login' })
+    }
   }
   return res
 }
