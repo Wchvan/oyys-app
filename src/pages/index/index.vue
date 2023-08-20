@@ -6,14 +6,18 @@
           show-icon
           scrollable
           :text="notice"
-          style="margin-top: -170rpx; background-color: transparent; height: 100rpx;"
+          style="
+            margin-top: -170rpx;
+            background-color: transparent;
+            height: 100rpx;
+          "
         />
         <view class="bank-goup">
           <view class="bank-item food-bank" @click="goFoodBank">
             <text class="iconfont img">&#xe7fa;</text>
             <text class="text">美食排行</text>
           </view>
-          
+
           <view class="bank-item" @click="goRecommend">
             <text class="iconfont img img-2">&#xe7f7;</text>
             <text class="text">饭圈推荐</text>
@@ -165,14 +169,14 @@ if (useUserStore().userInfo.isOrdered) {
 // 美食排行
 const goFoodBank = () => {
   uni.navigateTo({
-    url:"/pages/food-bank/food-bank"
+    url: '/pages/food-bank/food-bank',
   })
 }
 
 // 饭圈推荐
 const goRecommend = () => {
   uni.navigateTo({
-    url:"/pages/recommend/recommend"
+    url: '/pages/recommend/recommend',
   })
 }
 </script>
@@ -184,35 +188,34 @@ const goRecommend = () => {
   .bank-goup {
     width: 700rpx;
     height: 25%;
-    margin:  20rpx 25rpx;
+    margin: 20rpx 25rpx;
     background: #fff;
-    border-radius: 20rpx 20rpx 0 0 ;
+    border-radius: 20rpx 20rpx 0 0;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     .bank-item {
       padding-top: 30rpx;
-      flex:1;
+      flex: 1;
       text-align: center;
       height: 100%;
       .img {
-          font-size: 120rpx;
-          margin-bottom: 20rpx;
-          display: block;
-          color: #DE868F ;
+        font-size: 120rpx;
+        margin-bottom: 20rpx;
+        display: block;
+        color: #de868f;
       }
-      .img-2{
-        
-        color: #E99D42;
+      .img-2 {
+        color: #e99d42;
       }
       .text {
-          font-size: 36rpx;
-          font-weight: 600;
-          display: block;
+        font-size: 36rpx;
+        font-weight: 600;
+        display: block;
       }
     }
-    .food-bank{
-        border-right: 1.5px solid #eee;
+    .food-bank {
+      border-right: 1.5px solid #eee;
     }
   }
   .main {
@@ -222,7 +225,7 @@ const goRecommend = () => {
       padding: 20rpx;
       font-size: 32rpx;
       font-weight: 600;
-      color: #564F47;
+      color: #564f47;
     }
     .dish-box {
       width: 650rpx;
@@ -250,7 +253,7 @@ const goRecommend = () => {
 
           #star-icon-active {
             font-size: 50rpx;
-            color: #FFAB00 ;
+            color: #ffab00;
           }
         }
       }
@@ -279,7 +282,7 @@ const goRecommend = () => {
             font-size: 36rpx;
             font-weight: 600;
             line-height: 40rpx;
-            color: #564F47;
+            color: #564f47;
             padding: 10rpx;
           }
         }
@@ -293,7 +296,7 @@ const goRecommend = () => {
           width: 180rpx;
           height: 70rpx;
           // color: #ff6f00;
-          background-color: #FFAB00;
+          background-color: #ffab00;
           color: #fff;
           font-size: 36rpx;
           line-height: 70rpx;

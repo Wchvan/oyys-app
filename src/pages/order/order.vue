@@ -1,8 +1,16 @@
 <template>
   <view class="w-full h-full">
-    <view v-for="(item, index) in orderStore.orderList" :key="index" class="order-card">
+    <view
+      v-for="(item, index) in orderStore.orderList"
+      :key="index"
+      class="order-card"
+    >
       <view class="img card-item">
-        <img :src="item.image" alt="" style="width: 80%; height: 80%; margin-left: 10%" />
+        <img
+          :src="item.image"
+          alt=""
+          style="width: 80%; height: 80%; margin-left: 10%"
+        />
       </view>
       <view class="detail card-item">
         <view class="name">{{ item.name }}</view>
@@ -10,7 +18,11 @@
       </view>
       <view class="card-item">
         <view class="date">{{ item.date }}</view>
-        <button class="btn" :disabled="!item.isVerified" @click="review(item.id, item.supplierName, index)">
+        <button
+          class="btn"
+          :disabled="!item.isVerified"
+          @click="review(item.id, item.supplierName, index)"
+        >
           {{ buttonText(item) }}
           <!-- {{ item.isCommented ? '详情' : '评价' }} -->
         </button>
@@ -38,12 +50,12 @@ const review = (id: number, name: string, index: number) => {
 
 const buttonText = (item: orderDataType) => {
   if (!item.isVerified) {
-    return "待核销"
+    return '待核销'
   } else {
     if (!item.isCommented) {
-      return "待评价"
+      return '待评价'
     } else {
-      return "详情"
+      return '详情'
     }
   }
 }

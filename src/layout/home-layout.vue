@@ -1,7 +1,5 @@
 <template>
-
   <view class="container">
-    
     <view class="title">
       <view class="title-text">{{ props.title }}</view>
       <view class="title-text">{{ props.subTitle }}</view>
@@ -23,8 +21,6 @@ const props = withDefaults(
     subTitle: '',
   },
 )
-
-
 </script>
 
 <style lang="scss" scoped>
