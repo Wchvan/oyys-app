@@ -1,5 +1,7 @@
 <template>
+
   <view class="container">
+    
     <view class="title">
       <view class="title-text">{{ props.title }}</view>
       <view class="title-text">{{ props.subTitle }}</view>
@@ -17,19 +19,24 @@ const props = withDefaults(
     subTitle: string
   }>(),
   {
-    title: '今日必吃',
-    subTitle: '为你准备',
+    title: '',
+    subTitle: '',
   },
 )
+
+
 </script>
 
 <style lang="scss" scoped>
 .container {
   width: 750rpx;
-  height: 2000rpx;
-  background: url('@/static/home-bg.png') no-repeat center;
-  background-size: 100% 100%;
+  height: fit-content;
+  min-height: 1500rpx;
+  background: url('@/static/home-bg.png') no-repeat top;
+  background-size: 100% 1500rpx;
+  background-color: #fff;
   .title {
+    min-height: 450rpx;
     height: 30%;
     padding: 5%;
     padding-top: 10rpx;

@@ -7,4 +7,5 @@ export type userInfoType = {
   name: string
   token: string
   userType: UserType
+  workNum: string
 }

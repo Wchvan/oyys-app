@@ -16,7 +16,10 @@
 		},
 		{
 			"path": "pages/order/order",
-			"name": "order"
+			"name": "order",
+			"style":{
+				"navigationBarTitleText": "历史订单"
+			}
 		},
 		{
 			"path": "pages/order/order-detail/order-detail",
@@ -33,13 +36,39 @@
 		{
 			"path": "pages/error/error",
 			"name": "error"
+		}, 
+		{
+			"path": "pages/user/user",
+			"name": "user"
+		}, 
+		{
+			"path": "pages/food-bank/food-bank",
+			"name": "food-bank",
+			"style":{
+				"navigationBarTitleText": "美食排行"
+			}
+		}, 
+		{
+			"path": "pages/recommend/recommend",
+			"name": "recommend",
+			"style":{
+				"navigationBarTitleText": "饭圈推荐"
+			}
+		}, 
+		{
+			"path": "pages/favorites/favorites",
+			"name": "favorites",
+			"style":{
+				"navigationBarTitleText": "我的收藏"
+			}
 		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "食刻",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+		"titleSize":"30rpx"
 	},
 	"tabBar": {
 		"fontSize": "20px",
@@ -50,8 +79,8 @@
 				"text": "首页"
 			},
 			{
-				"pagePath": "pages/order/order",
-				"text": "订单"
+				"pagePath": "pages/user/user",
+				"text": "我的"
 			}
 		]
 	}

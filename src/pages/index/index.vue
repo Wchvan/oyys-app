@@ -1,17 +1,28 @@
 <template>
   <home-layout>
-    <view class="container">
+    <view class="home-container">
       <view class="main">
         <uni-notice-bar
           show-icon
           scrollable
-          style="margin-top: 120rpx"
           :text="notice"
+          style="margin-top: -170rpx; background-color: transparent; height: 100rpx;"
         />
+        <view class="bank-goup">
+          <view class="bank-item food-bank" @click="goFoodBank">
+            <text class="iconfont img">&#xe7fa;</text>
+            <text class="text">美食排行</text>
+          </view>
+          
+          <view class="bank-item" @click="goRecommend">
+            <text class="iconfont img img-2">&#xe7f7;</text>
+            <text class="text">饭圈推荐</text>
+          </view>
+        </view>
         <view class="title">今日套餐详情：</view>
         <view class="dish-box">
           <view class="star">
-            <view id="star">
+            <view id="star" @click="handleStar">
               <text v-if="!starFlag" id="star-icon" class="iconfont"
                 >&#xe600;</text
               >
@@ -43,13 +54,12 @@
               <view class="provider-item"
                 >详情：{{ setStore.setList[activeIndex]?.description }}</view
               >
-              <view style="height: 80rpx; width: 700rpx"></view>
             </view>
             <button class="confirm-btn" @click="handleConfirm">确认</button>
+            <view style="height: 20rpx; width: 650rpx"></view>
           </view>
         </view>
-
-        <view style="height: 80rpx; width: 700rpx"></view>
+        <view style="height: 80rpx; width: 650rpx"></view>
       </view>
     </view>
   </home-layout>
@@ -84,6 +94,9 @@ import { useUserStore } from '@/store/user/user'
 
 // 收藏相关
 const starFlag = ref<boolean>(false)
+const handleStar = () => {
+  starFlag.value = !starFlag.value
+}
 
 /* 通知相关 */
 const notice = ref<string>('今日无通知')
@@ -148,37 +161,83 @@ if (useUserStore().userInfo.isOrdered) {
     }
   })
 }
+
+// 美食排行
+const goFoodBank = () => {
+  uni.navigateTo({
+    url:"/pages/food-bank/food-bank"
+  })
+}
+
+// 饭圈推荐
+const goRecommend = () => {
+  uni.navigateTo({
+    url:"/pages/recommend/recommend"
+  })
+}
 </script>
 
 <style lang="scss" scoped>
-.container {
+.home-container {
   width: 750rpx;
   height: 100%;
   .bank-goup {
-    width: 650rpx;
+    width: 700rpx;
     height: 25%;
-    margin: 50rpx;
-    background: #eee;
+    margin:  20rpx 25rpx;
+    background: #fff;
+    border-radius: 20rpx 20rpx 0 0 ;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    .bank-item {
+      padding-top: 30rpx;
+      flex:1;
+      text-align: center;
+      height: 100%;
+      .img {
+          font-size: 120rpx;
+          margin-bottom: 20rpx;
+          display: block;
+          color: #DE868F ;
+      }
+      .img-2{
+        
+        color: #E99D42;
+      }
+      .text {
+          font-size: 36rpx;
+          font-weight: 600;
+          display: block;
+      }
+    }
+    .food-bank{
+        border-right: 1.5px solid #eee;
+    }
   }
   .main {
     height: 80%;
     .title {
-      height: 10%;
+      height: 80rpx;
       padding: 20rpx;
-      font-size: 40rpx;
-      font-weight: 700;
+      font-size: 32rpx;
+      font-weight: 600;
+      color: #564F47;
     }
     .dish-box {
-      width: 700rpx;
+      width: 650rpx;
       height: fit-content;
-      margin: 25rpx;
+      margin: 10rpx 50rpx;
       border-radius: 20rpx;
-      background: #fec80d;
+      // background: rgb(250,220,114);
+      background-color: #fff;
+      border: 1px solid #eee;
+      box-shadow: 10px -10px 10px -4px #ddd;
       .star {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
-        width: 700rpx;
+        width: 650rpx;
         height: 80rpx;
         line-height: 80rpx;
         #star {
@@ -191,14 +250,14 @@ if (useUserStore().userInfo.isOrdered) {
 
           #star-icon-active {
             font-size: 50rpx;
-            color: yellow;
+            color: #FFAB00 ;
           }
         }
       }
       .swiper {
-        width: 450rpx;
-        height: 400rpx;
-        margin-left: 130rpx;
+        width: 350rpx;
+        height: 300rpx;
+        margin-left: 150rpx;
         margin-bottom: 20rpx;
         .swiper-item {
           border-radius: 30rpx;
@@ -207,30 +266,38 @@ if (useUserStore().userInfo.isOrdered) {
           height: 100%;
           line-height: 100%;
           text-align: center;
-          background-color: red;
+          // background-color: red;
         }
       }
 
       .foot {
         position: relative;
-        width: 700rpx;
+        width: 650rpx;
         .provider {
-          padding: 20rpx 40rpx;
+          padding: 10rpx 40rpx;
           .provider-item {
             font-size: 36rpx;
             font-weight: 600;
-            line-height: 50rpx;
-            color: #eee;
+            line-height: 40rpx;
+            color: #564F47;
             padding: 10rpx;
           }
         }
         .confirm-btn {
-          position: absolute;
-          top: 50rpx;
-          right: 20rpx;
-          width: 200rpx;
-          height: 80rpx;
-          color: #ff6f00;
+          // position: absolute;
+          // top: 50rpx;
+          // bottom: 10rpx;
+          // right: 20rpx;
+          margin-right: 30rpx;
+          margin-top: 0rpx;
+          width: 180rpx;
+          height: 70rpx;
+          // color: #ff6f00;
+          background-color: #FFAB00;
+          color: #fff;
+          font-size: 36rpx;
+          line-height: 70rpx;
+          font-weight: 600;
         }
       }
     }

@@ -60,7 +60,7 @@ const submit = () => {
 
 <style lang="scss" scoped>
 .container {
-  height: 1300rpx;
+  height: 1500rpx;
   width: 750rpx;
   background: url('@/static/login-card-bg.png') no-repeat center;
   background-size: 100% 100%;
@@ -86,13 +86,15 @@ const submit = () => {
       left: 50%;
       transform: translateX(-50%);
       .input {
-        border: 2px solid #eee;
+        border: 1px solid rgba(17, 17, 17, 0.3);
         margin: 10rpx;
         width: 500rpx;
-        height: 60rpx;
+        height: 70rpx;
+        line-height: 70rpx;
         text-indent: 0.5rem;
       }
       .btn {
+        margin-top: 30rpx;
         width: 300rpx;
         background-color: #f2950a;
         color: #fff;

@@ -55,7 +55,19 @@ table {
 }
 
 /*容器*/
-.container {
-	margin: 10px auto 0px;
-	width: 95%;
+// .container {
+// 	margin: 10px auto 0px;
+// 	width: 95%;
+// }
+
+.uni-page-head__title{
+	font-size: 36rpx !important;
+}
+
+.uni-noticebar__content-text{
+	// color: red !important;
+	font-size: 32rpx !important;
+}
+.uni-noticebar-icon{
+	font-size: 50rpx !important;
 }
