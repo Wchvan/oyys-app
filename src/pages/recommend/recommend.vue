@@ -4,7 +4,11 @@
       <text class="text">饭圈推荐</text>
     </view>
     <view class="review-wrapper">
-      <view v-for="(item, index) in recommendStore.reviewList" :key="index" class="review-item">
+      <view
+        v-for="(item, index) in recommendStore.reviewList"
+        :key="index"
+        class="review-item"
+      >
         <view class="top">
           <view class="avatar">{{ item.name.slice(-1) }}</view>
           <view class="user-info">
@@ -36,18 +40,18 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { useRecommendStore } from '@/store/recommend/recommend'
 import type { getCommentsParm } from '@/interface/recommend/api'
+import { useRecommendStore } from '@/store/recommend/recommend'
 
 const form = ref<getCommentsParm>({
   page: 1,
-  pageSize: 10
+  pageSize: 10,
 })
 
 const total = ref<number>(0)
 
 const recommendStore = useRecommendStore()
-recommendStore.getReviewList(form.value).then(res => {
+recommendStore.getReviewList(form.value).then((res) => {
   if (res.code === 200) {
     total.value = res.data.total
   }
@@ -60,13 +64,13 @@ const hanldeLike = (index: number) => {
 onReachBottom(() => {
   if (recommendStore.reviewList.length < total.value) {
     form.value.page += 1
-    recommendStore.getReviewList(form.value).then(res => {
+    recommendStore.getReviewList(form.value).then((res) => {
       if (res.code === 200) {
         total.value = res.data.total
       }
     })
   }
-}) 
+})
 </script>
 
 <style lang="scss" scoped>

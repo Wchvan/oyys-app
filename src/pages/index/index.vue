@@ -97,8 +97,6 @@ import homeLayout from '@/layout/home-layout.vue'
 import { useSetStore } from '@/store/set/set'
 import { useUserStore } from '@/store/user/user'
 
-
-
 /* 通知相关 */
 const notice = ref<string>('今日无通知')
 HomeService.getNotice().then((res) => {
@@ -292,7 +290,7 @@ const handleStar = async () => {
         width: 650rpx;
         .provider {
           padding: 10rpx 40rpx;
-          .tips{
+          .tips {
             text-align: center;
             color: #ccc;
             font-size: 28rpx;
