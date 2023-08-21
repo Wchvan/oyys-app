@@ -10,6 +10,7 @@ export type getListResp = apiResp<{
     name: string
     supplierName: string
     weight: string
+    isLiked: boolean
   }[]
 }>
 
@@ -35,3 +36,17 @@ export type putOrderResp = apiResp<null>
 export type getNoticeResp = apiResp<{
   notice: string
 }>
+
+/* 收藏 */
+export type favoriteDishParm = {
+  id: number
+}
+
+export type favoriteDishResp = apiResp<null>
+
+/* 取消收藏 */
+export type cancelFavoriteDishParm = {
+  id: number
+}
+
+export type cancelFavoriteDishResp = apiResp<null>

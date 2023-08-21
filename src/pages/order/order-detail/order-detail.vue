@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, getCurrentInstance } from 'vue'
+import { getCurrentInstance } from 'vue'
 import type { postReviewParm } from '@/interface/order/api'
 import { useUserStore } from '@/store/user/user'
 import { useOrderStore } from '@/store/order/order'
@@ -58,22 +58,28 @@ const id = ref<number>(0)
 const title = ref<string>('')
 const index = ref<number>(0)
 const imagesArr = ref<any[]>([])
-
-onMounted(() => {
-  const options = getCurrentInstance()
-  id.value = options?.attrs?.id as number
-  title.value = options?.attrs?.name as string
-  index.value = options?.attrs?.index as number
-  form.value.orderId = id.value
-})
 const orderStore = useOrderStore()
-
 const form = ref<postReviewParm>({
   comment: orderStore.orderList[index.value].comment || '',
   id: useUserStore().userInfo.id,
   images: orderStore.orderList[index.value].commentImage || [],
   orderId: id.value,
   star: orderStore.orderList[index.value].star || 0,
+})
+
+onMounted(() => {
+  const options = getCurrentInstance()
+  console.log(options)
+  id.value = Number(options?.attrs?.id) as number
+  title.value = options?.attrs?.name as string
+  index.value = Number(options?.attrs?.index) as number
+  form.value = {
+    comment: orderStore.orderList[index.value].comment || '',
+    id: useUserStore().userInfo.id,
+    images: orderStore.orderList[index.value].commentImage || [],
+    orderId: id.value,
+    star: orderStore.orderList[index.value].star || 0,
+  }
 })
 
 const selectFile = (res: any) => {
@@ -116,7 +122,7 @@ const submit = async () => {
                 uni.showToast({
                   title: '发布成功',
                 })
-                uni.switchTab({
+                uni.redirectTo({
                   url: '/pages/order/order',
                 })
               }

@@ -6,4 +6,5 @@ export type setDataType = {
   name: string
   supplierName: string
   weight: string
+  isLiked: boolean
 }

@@ -15,9 +15,32 @@ export const useSetStore = defineStore(
       return res
     }
 
+    /* 收藏 */
+    const favoriteDish = async (index: number) => {
+      const res = await HomeService.favoriteDish({
+        id: setList.value[index].id,
+      })
+      if (res.code === 200) {
+        setList.value[index].isLiked = true
+      }
+      return res
+    }
+    /* 取消收藏 */
+    const cancelFavoriteDish = async (index: number) => {
+      const res = await HomeService.cancelFavoriteDish({
+        id: setList.value[index].id,
+      })
+      if (res.code === 200) {
+        setList.value[index].isLiked = false
+      }
+      return res
+    }
+
     return {
       setList,
       getSet,
+      favoriteDish,
+      cancelFavoriteDish,
     }
   },
   //   {

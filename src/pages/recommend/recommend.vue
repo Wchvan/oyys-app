@@ -4,36 +4,29 @@
       <text class="text">饭圈推荐</text>
     </view>
     <view class="review-wrapper">
-      <view v-for="item in 5" :key="item" class="review-item">
+      <view v-for="(item, index) in recommendStore.reviewList" :key="index" class="review-item">
         <view class="top">
-          <view class="avatar">琪</view>
+          <view class="avatar">{{ item.name.slice(-1) }}</view>
           <view class="user-info">
-            <view class="username">猪猪琪</view>
-            <view class="date">2023-7-17</view>
+            <view class="username">{{ item.name }}</view>
+            <view class="date">{{ item.time }}</view>
           </view>
-          <view class="dish"> XXX套餐 </view>
+          <view class="dish"> {{ item.setName }} </view>
         </view>
         <view class="main-text">
-          你总是打哈哈哈,你有没有想过,H键累了,它不想总是被你
-          像肌肉痉挛一样狂按,它渴望休息,它想念自己的家人,你关
-          心过这些吗?你没有,你只考虑你自己。...
+          {{ item.comment }}
         </view>
         <view class="main-img">
-          <img
-            v-for="item in 5"
-            :key="item"
-            class="img"
-            src="/src//static/logo.png"
-          />
+          <img v-for="url in item.image" :key="url" class="img" :src="url" />
         </view>
         <view class="bottom">
           <view class="like-num">
-            已获得<strong class="num"> 1000 </strong> 赞
+            已获得<strong class="num"> {{ item.likeNum }} </strong> 赞
           </view>
-          <view class="like" @click="hanldeLike(item)">
-            <text v-if="!active[item]" class="iconfont">&#xe8ad;</text>
+          <view class="like" @click="hanldeLike(index)">
+            <text v-if="!item.isLiked" class="iconfont">&#xe8ad;</text>
             <text v-else class="iconfont active">&#xe8c3;</text>
-            <text class="text">{{ active[item] ? '取消点赞' : '点赞' }}</text>
+            <text class="text">{{ item.isLiked ? '取消点赞' : '点赞' }}</text>
           </view>
         </view>
       </view>
@@ -43,12 +36,37 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useRecommendStore } from '@/store/recommend/recommend'
+import type { getCommentsParm } from '@/interface/recommend/api'
 
-const active = ref<boolean[]>(new Array(5).fill(false))
+const form = ref<getCommentsParm>({
+  page: 1,
+  pageSize: 10
+})
 
-const hanldeLike = (item: number) => {
-  active.value[item] = !active.value[item]
+const total = ref<number>(0)
+
+const recommendStore = useRecommendStore()
+recommendStore.getReviewList(form.value).then(res => {
+  if (res.code === 200) {
+    total.value = res.data.total
+  }
+})
+
+const hanldeLike = (index: number) => {
+  recommendStore.likeCommend(index)
 }
+
+onReachBottom(() => {
+  if (recommendStore.reviewList.length < total.value) {
+    form.value.page += 1
+    recommendStore.getReviewList(form.value).then(res => {
+      if (res.code === 200) {
+        total.value = res.data.total
+      }
+    })
+  }
+}) 
 </script>
 
 <style lang="scss" scoped>

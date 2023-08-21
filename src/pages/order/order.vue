@@ -82,6 +82,7 @@ const buttonText = (item: orderDataType) => {
     .date {
       font-size: 28rpx;
       padding-left: 15rpx;
+      line-height: 30rpx;
     }
 
     .btn {

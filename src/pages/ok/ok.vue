@@ -1,12 +1,12 @@
 <template>
   <view class="success">
     <img :src="imgUrl" class="img" />
-    <view class="msg">已核销</view>
+    <view class="msg">订单重复核销</view>
   </view>
 </template>
 
 <script setup lang="ts">
-import imgUrl from '@/static/success.png'
+import imgUrl from '@/static/error.png'
 </script>
 
 <style lang="scss" scoped>

@@ -49,6 +49,7 @@
           </swiper>
           <view class="foot">
             <view class="provider">
+              <view class="tips">左右滑动可查看更多</view>
               <view class="provider-item"
                 >供应商：{{ setStore.setList[activeIndex]?.supplierName }}</view
               >
@@ -63,7 +64,7 @@
             <view style="height: 20rpx; width: 650rpx"></view>
           </view>
         </view>
-        <view style="height: 80rpx; width: 650rpx"></view>
+        <view style="height: 40rpx; width: 650rpx"></view>
       </view>
     </view>
   </home-layout>
@@ -96,11 +97,7 @@ import homeLayout from '@/layout/home-layout.vue'
 import { useSetStore } from '@/store/set/set'
 import { useUserStore } from '@/store/user/user'
 
-// 收藏相关
-const starFlag = ref<boolean>(false)
-const handleStar = () => {
-  starFlag.value = !starFlag.value
-}
+
 
 /* 通知相关 */
 const notice = ref<string>('今日无通知')
@@ -114,6 +111,7 @@ HomeService.getNotice().then((res) => {
 const activeIndex = ref<number>(0)
 const dishChange = (value: any) => {
   activeIndex.value = value.detail.current
+  starFlag.value = setStore.setList[activeIndex.value].isLiked
 }
 
 /* 菜品相关 */
@@ -178,6 +176,22 @@ const goRecommend = () => {
   uni.navigateTo({
     url: '/pages/recommend/recommend',
   })
+}
+
+// 收藏相关
+const starFlag = ref<boolean>(false)
+const handleStar = async () => {
+  if (starFlag.value) {
+    const res = await setStore.cancelFavoriteDish(activeIndex.value)
+    if (res.code === 200) {
+      starFlag.value = false
+    }
+  } else {
+    const res = await setStore.favoriteDish(activeIndex.value)
+    if (res.code === 200) {
+      starFlag.value = true
+    }
+  }
 }
 </script>
 
@@ -278,6 +292,14 @@ const goRecommend = () => {
         width: 650rpx;
         .provider {
           padding: 10rpx 40rpx;
+          .tips{
+            text-align: center;
+            color: #ccc;
+            font-size: 28rpx;
+            font-weight: 700;
+            line-height: 40rpx;
+            padding-bottom: 20rpx;
+          }
           .provider-item {
             font-size: 36rpx;
             font-weight: 600;
