@@ -115,7 +115,11 @@ const dishChange = (value: any) => {
 /* 菜品相关 */
 const setStore = useSetStore()
 
-setStore.getSet()
+setStore.getSet().then(res => {
+  if (res.code === 200) {
+    starFlag.value = setStore.setList[activeIndex.value].isLiked
+  }  
+})
 
 /* 确认订单 */
 const message = ref<any>(null)

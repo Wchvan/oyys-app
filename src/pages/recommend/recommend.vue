@@ -51,6 +51,7 @@ const form = ref<getCommentsParm>({
 const total = ref<number>(0)
 
 const recommendStore = useRecommendStore()
+recommendStore.initReviewList()
 recommendStore.getReviewList(form.value).then((res) => {
   if (res.code === 200) {
     total.value = res.data.total

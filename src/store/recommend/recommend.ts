@@ -10,6 +10,10 @@ import { RecommendService } from '@/api/recommend/recommend'
 export const useRecommendStore = defineStore('recommend', () => {
   const reviewList = ref<recommendDataType[]>([])
 
+  const initReviewList = () => {
+    reviewList.value = []
+  }
+
   const getReviewList = async (params: getCommentsParm) => {
     const res = await RecommendService.getComments(params)
     if (res.code === 200) {
@@ -38,6 +42,7 @@ export const useRecommendStore = defineStore('recommend', () => {
 
   return {
     reviewList,
+    initReviewList,
     getReviewList,
     likeCommend,
   }
