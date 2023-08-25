@@ -1,8 +1,8 @@
 <template>
   <view class="container">
-    <view class="title">
+    <!-- <view class="title">
       <text class="text">饭圈推荐</text>
-    </view>
+    </view> -->
     <view class="review-wrapper">
       <view
         v-for="(item, index) in recommendStore.reviewList"
@@ -79,24 +79,25 @@ onReachBottom(() => {
   width: 750rpx;
   min-height: 1500rpx;
   height: 100%;
-  background: url('@/static/all-bg.png') no-repeat top;
+  background: url('@/static/review-bg.png') no-repeat top;
   background-size: 100% 1500rpx;
-  background-color: #fff;
+  background-color: rgb(250,245,233);
 
-  .title {
-    width: 750rpx;
-    height: 450rpx;
+  // .title {
+  //   width: 750rpx;
+  //   height: 450rpx;
 
-    .text {
-      display: block;
-      padding: 100rpx 50rpx;
-      font-size: 80rpx;
-      font-weight: 700;
-      color: #564f47;
-    }
-  }
+  //   .text {
+  //     display: block;
+  //     padding: 100rpx 50rpx;
+  //     font-size: 80rpx;
+  //     font-weight: 700;
+  //     color: #564f47;
+  //   }
+  // }
 
   .review-wrapper {
+    padding-top: 300rpx;
     display: flex;
     height: fit-content;
     flex-direction: column;

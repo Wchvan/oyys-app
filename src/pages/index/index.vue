@@ -2,16 +2,11 @@
   <home-layout>
     <view class="home-container">
       <view class="main">
-        <uni-notice-bar
-          show-icon
-          scrollable
-          :text="notice"
-          style="
+        <uni-notice-bar show-icon scrollable :text="notice" style="
             margin-top: -170rpx;
             background-color: transparent;
             height: 100rpx;
-          "
-        />
+          " />
         <view class="bank-goup">
           <view class="bank-item food-bank" @click="goFoodBank">
             <text class="iconfont img">&#xe7fa;</text>
@@ -27,22 +22,12 @@
         <view class="dish-box">
           <view class="star">
             <view id="star" @click="handleStar">
-              <text v-if="!starFlag" id="star-icon" class="iconfont"
-                >&#xe600;</text
-              >
-              <text v-else id="star-icon-active" class="iconfont"
-                >&#xe8c6;</text
-              >
+              <text v-if="!starFlag" id="star-icon" class="iconfont">&#xe600;</text>
+              <text v-else id="star-icon-active" class="iconfont">&#xe8c6;</text>
             </view>
           </view>
-          <swiper
-            :current="activeIndex"
-            class="swiper"
-            circular
-            :indicator-dots="true"
-            :autoplay="false"
-            @change="dishChange"
-          >
+          <swiper :current="activeIndex" class="swiper" circular :indicator-dots="true" :autoplay="false"
+            @change="dishChange">
             <swiper-item v-for="(item, index) in setStore.setList" :key="index">
               <img class="swiper-item" :src="item.image" />
             </swiper-item>
@@ -50,15 +35,9 @@
           <view class="foot">
             <view class="provider">
               <view class="tips">左右滑动可查看更多</view>
-              <view class="provider-item"
-                >供应商：{{ setStore.setList[activeIndex]?.supplierName }}</view
-              >
-              <view class="provider-item"
-                >套餐名：{{ setStore.setList[activeIndex]?.name }}</view
-              >
-              <view class="provider-item"
-                >详情：{{ setStore.setList[activeIndex]?.description }}</view
-              >
+              <view class="provider-item">供应商：{{ setStore.setList[activeIndex]?.supplierName }}</view>
+              <view class="provider-item">套餐名：{{ setStore.setList[activeIndex]?.name }}</view>
+              <view class="provider-item">详情：{{ setStore.setList[activeIndex]?.description }}</view>
             </view>
             <button class="confirm-btn" @click="handleConfirm">确认</button>
             <view style="height: 20rpx; width: 650rpx"></view>
@@ -68,23 +47,16 @@
       </view>
     </view>
   </home-layout>
-  <uni-popup
-    ref="message"
-    type="dialog"
-    style="position: absolute; top: 1100rpx; right: -200rpx"
-  >
+  <uni-popup ref="message" type="dialog" style="position: absolute; top: 1100rpx; right: -200rpx">
     <uni-popup-dialog type="center" :duration="10000000000" title="你的二维码">
       <view>
         <img :src="QRUrl" style="width: 400rpx; height: 400rpx" />
-        <view
-          style="
+        <view style="
             font-size: 40rpx;
             font-weight: 600;
             text-align: center;
             margin-top: 20rpx;
-          "
-          >{{ code }}</view
-        >
+          ">{{ code }}</view>
       </view>
     </uni-popup-dialog>
   </uni-popup>
@@ -119,6 +91,15 @@ setStore.getSet().then((res) => {
   if (res.code === 200) {
     starFlag.value = setStore.setList[activeIndex.value].isLiked
   }
+})
+
+onShow(() => {
+  setStore.getSet().then((res) => {
+    if (res.code === 200) {
+      starFlag.value = setStore.setList[activeIndex.value].isLiked
+    }
+  })
+
 })
 
 /* 确认订单 */
@@ -201,6 +182,7 @@ const handleStar = async () => {
 .home-container {
   width: 750rpx;
   height: 100%;
+
   .bank-goup {
     width: 700rpx;
     height: 25%;
@@ -210,32 +192,39 @@ const handleStar = async () => {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+
     .bank-item {
       padding-top: 30rpx;
       flex: 1;
       text-align: center;
       height: 100%;
+
       .img {
         font-size: 120rpx;
         margin-bottom: 20rpx;
         display: block;
         color: #de868f;
       }
+
       .img-2 {
         color: #e99d42;
       }
+
       .text {
         font-size: 36rpx;
         font-weight: 600;
         display: block;
       }
     }
+
     .food-bank {
       border-right: 1.5px solid #eee;
     }
   }
+
   .main {
     height: 80%;
+
     .title {
       height: 80rpx;
       padding: 20rpx;
@@ -243,6 +232,7 @@ const handleStar = async () => {
       font-weight: 600;
       color: #564f47;
     }
+
     .dish-box {
       width: 650rpx;
       height: fit-content;
@@ -252,6 +242,7 @@ const handleStar = async () => {
       background-color: #fff;
       border: 1px solid #eee;
       box-shadow: 10px -10px 10px -4px #ddd;
+
       .star {
         display: flex;
         flex-direction: row;
@@ -259,9 +250,11 @@ const handleStar = async () => {
         width: 650rpx;
         height: 80rpx;
         line-height: 80rpx;
+
         #star {
           padding: 10rpx;
           padding-right: 30rpx;
+
           #star-icon {
             font-size: 50rpx;
             font-weight: 600;
@@ -273,11 +266,13 @@ const handleStar = async () => {
           }
         }
       }
+
       .swiper {
         width: 350rpx;
         height: 300rpx;
         margin-left: 150rpx;
         margin-bottom: 20rpx;
+
         .swiper-item {
           border-radius: 30rpx;
           display: block;
@@ -292,8 +287,10 @@ const handleStar = async () => {
       .foot {
         position: relative;
         width: 650rpx;
+
         .provider {
           padding: 10rpx 40rpx;
+
           .tips {
             text-align: center;
             color: #ccc;
@@ -302,6 +299,7 @@ const handleStar = async () => {
             line-height: 40rpx;
             padding-bottom: 20rpx;
           }
+
           .provider-item {
             font-size: 36rpx;
             font-weight: 600;
@@ -310,6 +308,7 @@ const handleStar = async () => {
             padding: 10rpx;
           }
         }
+
         .confirm-btn {
           // position: absolute;
           // top: 50rpx;

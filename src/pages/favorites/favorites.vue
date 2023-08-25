@@ -1,5 +1,5 @@
 <template>
-  <view class="w-full h-full">
+  <view class="w-full h-full" style="padding-top: 30rpx;">
     <view
       v-for="(item, index) in userStore.favoriteSetList"
       :key="index"
@@ -9,7 +9,7 @@
         <img
           :src="item.image"
           alt=""
-          style="width: 80%; height: 80%; margin-left: 10%"
+          style="width: 100%; height: 100%;"
         />
       </view>
       <view class="detail card-item">
@@ -60,33 +60,30 @@ const handleLike = (index: number, liked: boolean) => {
 .order-card {
   width: 700rpx;
   margin: 25rpx;
-  min-height: 200rpx;
-  height: fit-content;
-  background: white;
-  border-radius: 30rpx;
+  height: 200rpx;
+  background-color: rgb(248, 239, 216);
   display: flex;
   flex-direction: row;
+  margin-bottom: 50rpx;
 
   .card-item {
     flex: 1;
-    min-height: 180rpx;
-    height: fit-content;
+    height: 200rpx;
     margin: 10rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     .sale {
-      padding-top: 10rpx;
       font-size: 32rpx;
-      // padding-left: 15rpx;
       text-align: center;
       font-weight: 600;
       color: #f2783b;
     }
     .sale-disable {
-      color: #ccc;
+      color: #bbb;
     }
     .btn {
+      display: block;
       color: #ff6f00;
       border-radius: 30rpx;
       width: 100%;
@@ -100,14 +97,23 @@ const handleLike = (index: number, liked: boolean) => {
     }
   }
 
+  .img{
+    flex: 1.2;
+    border-radius: 10rpx;
+    overflow: hidden;
+    height: 200rpx;
+    position: relative;
+    top: -40rpx;
+    left: 10rpx;
+  }  
   .detail {
-    padding: 10rpx;
-    flex: 1.5;
+    padding-left: 20rpx;
+    padding-top: 0;
+    flex: 1.2;
     font-size: 32rpx;
     justify-content: flex-start;
     line-height: 40rpx;
     .name {
-      padding-top: 5rpx;
       font-size: 36rpx;
       line-height: 60rpx;
       font-weight: 700;

@@ -1,5 +1,5 @@
 <template>
-  <view class="w-full h-full">
+  <view class="w-full h-full" style="padding-top: 30rpx;">
     <view
       v-for="(item, index) in orderStore.orderList"
       :key="index"
@@ -9,7 +9,7 @@
         <img
           :src="item.image"
           alt=""
-          style="width: 80%; height: 80%; margin-left: 10%"
+          style="width: 100%; height: 100%; "
         />
       </view>
       <view class="detail card-item">
@@ -66,15 +66,16 @@ const buttonText = (item: orderDataType) => {
   width: 700rpx;
   margin: 25rpx;
   height: 200rpx;
-  background: white;
-  border-radius: 30rpx;
+  background-color: rgb(248, 239, 216);
   display: flex;
   flex-direction: row;
+  margin-bottom: 60rpx;
+
 
   .card-item {
     flex: 1;
-    height: 180rpx;
-    margin: 10rpx;
+    height: 200rpx;
+    margin: 0 10rpx;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -98,15 +99,24 @@ const buttonText = (item: orderDataType) => {
     }
   }
 
+  .img{
+    flex: 1.2;
+    border-radius: 10rpx;
+    overflow: hidden;
+    height: 200rpx;
+    position: relative;
+    top: -40rpx;
+    left: 10rpx;
+  }  
+
   .detail {
-    padding: 10rpx;
-    flex: 1.5;
+    padding-left: 30rpx;
+    padding-top: 10rpx;
+    flex: 1.2;
     font-size: 32rpx;
     justify-content: flex-start;
     line-height: 40rpx;
-
     .name {
-      padding-top: 5rpx;
       font-size: 36rpx;
       line-height: 60rpx;
       font-weight: 700;
