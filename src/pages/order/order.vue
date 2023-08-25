@@ -1,16 +1,12 @@
 <template>
-  <view class="w-full h-full" style="padding-top: 30rpx;">
+  <view class="w-full h-full" style="padding-top: 30rpx">
     <view
       v-for="(item, index) in orderStore.orderList"
       :key="index"
       class="order-card"
     >
       <view class="img card-item">
-        <img
-          :src="item.image"
-          alt=""
-          style="width: 100%; height: 100%; "
-        />
+        <img :src="item.image" alt="" style="width: 100%; height: 100%" />
       </view>
       <view class="detail card-item">
         <view class="name">{{ item.name }}</view>
@@ -71,7 +67,6 @@ const buttonText = (item: orderDataType) => {
   flex-direction: row;
   margin-bottom: 60rpx;
 
-
   .card-item {
     flex: 1;
     height: 200rpx;
@@ -99,7 +94,7 @@ const buttonText = (item: orderDataType) => {
     }
   }
 
-  .img{
+  .img {
     flex: 1.2;
     border-radius: 10rpx;
     overflow: hidden;
@@ -107,7 +102,7 @@ const buttonText = (item: orderDataType) => {
     position: relative;
     top: -40rpx;
     left: 10rpx;
-  }  
+  }
 
   .detail {
     padding-left: 30rpx;

@@ -2,11 +2,16 @@
   <home-layout>
     <view class="home-container">
       <view class="main">
-        <uni-notice-bar show-icon scrollable :text="notice" style="
+        <uni-notice-bar
+          show-icon
+          scrollable
+          :text="notice"
+          style="
             margin-top: -170rpx;
             background-color: transparent;
             height: 100rpx;
-          " />
+          "
+        />
         <view class="bank-goup">
           <view class="bank-item food-bank" @click="goFoodBank">
             <text class="iconfont img">&#xe7fa;</text>
@@ -22,12 +27,22 @@
         <view class="dish-box">
           <view class="star">
             <view id="star" @click="handleStar">
-              <text v-if="!starFlag" id="star-icon" class="iconfont">&#xe600;</text>
-              <text v-else id="star-icon-active" class="iconfont">&#xe8c6;</text>
+              <text v-if="!starFlag" id="star-icon" class="iconfont"
+                >&#xe600;</text
+              >
+              <text v-else id="star-icon-active" class="iconfont"
+                >&#xe8c6;</text
+              >
             </view>
           </view>
-          <swiper :current="activeIndex" class="swiper" circular :indicator-dots="true" :autoplay="false"
-            @change="dishChange">
+          <swiper
+            :current="activeIndex"
+            class="swiper"
+            circular
+            :indicator-dots="true"
+            :autoplay="false"
+            @change="dishChange"
+          >
             <swiper-item v-for="(item, index) in setStore.setList" :key="index">
               <img class="swiper-item" :src="item.image" />
             </swiper-item>
@@ -35,9 +50,15 @@
           <view class="foot">
             <view class="provider">
               <view class="tips">左右滑动可查看更多</view>
-              <view class="provider-item">供应商：{{ setStore.setList[activeIndex]?.supplierName }}</view>
-              <view class="provider-item">套餐名：{{ setStore.setList[activeIndex]?.name }}</view>
-              <view class="provider-item">详情：{{ setStore.setList[activeIndex]?.description }}</view>
+              <view class="provider-item"
+                >供应商：{{ setStore.setList[activeIndex]?.supplierName }}</view
+              >
+              <view class="provider-item"
+                >套餐名：{{ setStore.setList[activeIndex]?.name }}</view
+              >
+              <view class="provider-item"
+                >详情：{{ setStore.setList[activeIndex]?.description }}</view
+              >
             </view>
             <button class="confirm-btn" @click="handleConfirm">确认</button>
             <view style="height: 20rpx; width: 650rpx"></view>
@@ -47,16 +68,23 @@
       </view>
     </view>
   </home-layout>
-  <uni-popup ref="message" type="dialog" style="position: absolute; top: 1100rpx; right: -200rpx">
+  <uni-popup
+    ref="message"
+    type="dialog"
+    style="position: absolute; top: 1100rpx; right: -200rpx"
+  >
     <uni-popup-dialog type="center" :duration="10000000000" title="你的二维码">
       <view>
         <img :src="QRUrl" style="width: 400rpx; height: 400rpx" />
-        <view style="
+        <view
+          style="
             font-size: 40rpx;
             font-weight: 600;
             text-align: center;
             margin-top: 20rpx;
-          ">{{ code }}</view>
+          "
+          >{{ code }}</view
+        >
       </view>
     </uni-popup-dialog>
   </uni-popup>
@@ -99,7 +127,6 @@ onShow(() => {
       starFlag.value = setStore.setList[activeIndex.value].isLiked
     }
   })
-
 })
 
 /* 确认订单 */

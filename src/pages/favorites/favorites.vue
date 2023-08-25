@@ -1,16 +1,12 @@
 <template>
-  <view class="w-full h-full" style="padding-top: 30rpx;">
+  <view class="w-full h-full" style="padding-top: 30rpx">
     <view
       v-for="(item, index) in userStore.favoriteSetList"
       :key="index"
       class="order-card"
     >
       <view class="img card-item">
-        <img
-          :src="item.image"
-          alt=""
-          style="width: 100%; height: 100%;"
-        />
+        <img :src="item.image" alt="" style="width: 100%; height: 100%" />
       </view>
       <view class="detail card-item">
         <view class="name">{{ item.name }}</view>
@@ -97,7 +93,7 @@ const handleLike = (index: number, liked: boolean) => {
     }
   }
 
-  .img{
+  .img {
     flex: 1.2;
     border-radius: 10rpx;
     overflow: hidden;
@@ -105,7 +101,7 @@ const handleLike = (index: number, liked: boolean) => {
     position: relative;
     top: -40rpx;
     left: 10rpx;
-  }  
+  }
   .detail {
     padding-left: 20rpx;
     padding-top: 0;

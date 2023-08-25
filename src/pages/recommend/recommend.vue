@@ -81,7 +81,7 @@ onReachBottom(() => {
   height: 100%;
   background: url('@/static/review-bg.png') no-repeat top;
   background-size: 100% 1500rpx;
-  background-color: rgb(250,245,233);
+  background-color: rgb(250, 245, 233);
 
   // .title {
   //   width: 750rpx;

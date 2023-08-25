@@ -2,24 +2,46 @@
   <view class="w-full h-full">
     <view class="title">
       {{ title }}
-      <button v-if="!orderStore.orderList[index].isCommented" class="btn" @click="submit">
+      <button
+        v-if="!orderStore.orderList[index].isCommented"
+        class="btn"
+        @click="submit"
+      >
         发布
       </button>
     </view>
     <uni-section title="评分" type="line" padding :title-font-size="'36rpx'">
-      <uni-rate v-model="form.star" :size="35" :disabled="orderStore.orderList[index].isCommented" />
+      <uni-rate
+        v-model="form.star"
+        :size="35"
+        :disabled="orderStore.orderList[index].isCommented"
+      />
     </uni-section>
     <uni-section title="评价" type="line" padding :title-font-size="'36rpx'">
-      <textarea v-model="form.comment" placeholder="请评价" :disabled="orderStore.orderList[index].isCommented" />
+      <textarea
+        v-model="form.comment"
+        placeholder="请评价"
+        :disabled="orderStore.orderList[index].isCommented"
+      />
     </uni-section>
     <uni-section title="上传图片" type="line" :title-font-size="'36rpx'">
       <view v-if="!orderStore.orderList[index].isCommented" class="fileList">
-        <uni-file-picker v-model="imagesArr" limit="9" :auto-upload="false" file-mediatype="image" mode="grid"
-          @select="selectFile"></uni-file-picker>
+        <uni-file-picker
+          v-model="imagesArr"
+          limit="9"
+          :auto-upload="false"
+          file-mediatype="image"
+          mode="grid"
+          @select="selectFile"
+        ></uni-file-picker>
       </view>
       <view v-else class="fileList">
-        <img v-for="item in orderStore.orderList[index].commentImage" :key="item" :src="item"
-          style="width: 200rpx; height: 200rpx; margin: 20rpx" />
+        <img
+          v-for="item in orderStore.orderList[index].commentImage"
+          :key="item"
+          :src="item"
+          style="width: 200rpx; height: 200rpx; margin: 20rpx"
+        />
       </view>
     </uni-section>
   </view>
